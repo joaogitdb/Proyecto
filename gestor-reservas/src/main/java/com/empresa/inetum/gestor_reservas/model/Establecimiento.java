@@ -1,33 +1,29 @@
 package com.empresa.inetum.gestor_reservas.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Paciente")
-public class Paciente {
+@Table(name = "Establecimiento")
+public class Establecimiento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "paciente_id")
+    @Column(name = "establecimiento_id")
     private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "nombre", nullable = false, length = 150)
     private String nombre;
 
-    @Column(name = "apellidos", nullable = false, length = 100)
-    private String apellidos;
+    @Column(name = "direccion", nullable = false, length = 255)
+    private String direccion;
 
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
+    @Column(name = "capacidad", nullable = false)
+    private Integer capacidad;
 
-    @Column(name = "documento_identidad", nullable = false, unique = true, length = 50)
-    private String documentoIdentidad;
-
-    @Column(name = "contacto", length = 100)
-    private String contacto;
+    @Column(name = "tipo", length = 50)
+    private String tipo;
 
     @Column(name = "fecha_creacion", updatable = false)
     private LocalDateTime fechaCreacion;
@@ -35,7 +31,10 @@ public class Paciente {
     @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "establecimiento", cascade = CascadeType.ALL)
+    private Set<Habitacion> habitaciones;
+
+    @OneToMany(mappedBy = "establecimiento", cascade = CascadeType.ALL)
     private Set<Reserva> reservas;
 
 	public Long getId() {
@@ -54,36 +53,28 @@ public class Paciente {
 		this.nombre = nombre;
 	}
 
-	public String getApellidos() {
-		return apellidos;
+	public String getDireccion() {
+		return direccion;
 	}
 
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
-	public LocalDate getFechaNacimiento() {
-		return fechaNacimiento;
+	public Integer getCapacidad() {
+		return capacidad;
 	}
 
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setCapacidad(Integer capacidad) {
+		this.capacidad = capacidad;
 	}
 
-	public String getDocumentoIdentidad() {
-		return documentoIdentidad;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setDocumentoIdentidad(String documentoIdentidad) {
-		this.documentoIdentidad = documentoIdentidad;
-	}
-
-	public String getContacto() {
-		return contacto;
-	}
-
-	public void setContacto(String contacto) {
-		this.contacto = contacto;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public LocalDateTime getFechaCreacion() {
@@ -102,6 +93,14 @@ public class Paciente {
 		this.fechaActualizacion = fechaActualizacion;
 	}
 
+	public Set<Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public void setHabitaciones(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
 	public Set<Reserva> getReservas() {
 		return reservas;
 	}
@@ -112,3 +111,4 @@ public class Paciente {
 
     
 }
+

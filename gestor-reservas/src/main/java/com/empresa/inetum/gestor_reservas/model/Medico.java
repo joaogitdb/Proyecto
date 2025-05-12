@@ -1,17 +1,16 @@
 package com.empresa.inetum.gestor_reservas.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "Paciente")
-public class Paciente {
+@Table(name = "Medico")
+public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "paciente_id")
+    @Column(name = "medico_id")
     private Long id;
 
     @Column(name = "nombre", nullable = false, length = 100)
@@ -20,14 +19,11 @@ public class Paciente {
     @Column(name = "apellidos", nullable = false, length = 100)
     private String apellidos;
 
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
-
     @Column(name = "documento_identidad", nullable = false, unique = true, length = 50)
     private String documentoIdentidad;
 
-    @Column(name = "contacto", length = 100)
-    private String contacto;
+    @Column(name = "especialidad", length = 100)
+    private String especialidad;
 
     @Column(name = "fecha_creacion", updatable = false)
     private LocalDateTime fechaCreacion;
@@ -35,7 +31,7 @@ public class Paciente {
     @Column(name = "fecha_actualizacion")
     private LocalDateTime fechaActualizacion;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
     private Set<Reserva> reservas;
 
 	public Long getId() {
@@ -62,14 +58,6 @@ public class Paciente {
 		this.apellidos = apellidos;
 	}
 
-	public LocalDate getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
 	public String getDocumentoIdentidad() {
 		return documentoIdentidad;
 	}
@@ -78,12 +66,12 @@ public class Paciente {
 		this.documentoIdentidad = documentoIdentidad;
 	}
 
-	public String getContacto() {
-		return contacto;
+	public String getEspecialidad() {
+		return especialidad;
 	}
 
-	public void setContacto(String contacto) {
-		this.contacto = contacto;
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
 	}
 
 	public LocalDateTime getFechaCreacion() {
