@@ -1,8 +1,7 @@
 package com.empresa.inetum.gestor_reservas.controller;
 
-
-import com.empresa.inetum.gestor_reservas.model.Paciente;
-import com.empresa.inetum.gestor_reservas.repository.PacienteRepository;
+import com.empresa.inetum.gestor_reservas.model.Establecimiento;
+import com.empresa.inetum.gestor_reservas.repository.EstablecimientoRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,41 +9,38 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pacientes")
-public class PacienteController {
+@RequestMapping("/api/establecimientos")
+public class EstablecimientoController {
 
-    private final PacienteRepository repository;
+    private final EstablecimientoRepository repository;
 
-    public PacienteController(PacienteRepository repository) {
+    public EstablecimientoController(EstablecimientoRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping
-    public List<Paciente> getAll(@RequestParam(required = false) String nombre) {
-        if (nombre != null) {
-            return repository.findByNombreContainingIgnoreCase(nombre);
-        }
+    public List<Establecimiento> getAll() {
         return repository.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Paciente> getById(@PathVariable Long id) {
+    public ResponseEntity<Establecimiento> getById(@PathVariable Long id) {
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Paciente create(@Valid @RequestBody Paciente paciente) {
-        return repository.save(paciente);
+    public Establecimiento create(@Valid @RequestBody Establecimiento establecimiento) {
+        return repository.save(establecimiento);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Paciente> update(@PathVariable Long id, @Valid @RequestBody Paciente paciente) {
+    public ResponseEntity<Establecimiento> update(@PathVariable Long id, @Valid @RequestBody Establecimiento establecimiento) {
         return repository.findById(id)
                 .map(existing -> {
-                    paciente.setId(existing.getId());
-                    return ResponseEntity.ok(repository.save(paciente));
+                    establecimiento.setId(existing.getId());
+                    return ResponseEntity.ok(repository.save(establecimiento));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -59,5 +55,3 @@ public class PacienteController {
                 .orElse(ResponseEntity.notFound().build());
     }
 }
-
-
