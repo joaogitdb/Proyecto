@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    h1, h2 { color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #ecf0f1; }
+  </style>
+</head>
+<body>
+  <h1>Informe Diario – <span th:text="${fecha}">2025-05-14</span></h1>
+
+  <h2>Resumen General</h2>
+  <p>Pacientes únicos: <strong th:text="${totalPacientes}">0</strong></p>
+  <p>Reservas totales: <strong th:text="${totalReservas}">0</strong></p>
+
+  <h2>Reservas por Médico</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Médico</th>
+        <th>Reservas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="m : ${reservasPorMedico}">
+        <td th:text="${m.nombreMedico}">Dr. Pérez</td>
+        <td th:text="${m.cantidad}">0</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Ocupación por Establecimiento</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Establecimiento</th>
+        <th>Capacidad</th>
+        <th>Ocupadas</th>
+        <th>Disponibles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="e : ${ocupacion}">
+        <td th:text="${e.nombre}">Clínica A</td>
+        <td th:text="${e.capacidad}">0</td>
+        <td th:text="${e.ocupadas}">0</td>
+        <td th:text="${e.disponibles}">0</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
+
