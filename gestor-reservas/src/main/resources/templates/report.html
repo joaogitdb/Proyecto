@@ -1,57 +1,121 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
+  <title>Informe Diario</title>
   <style>
-    body { font-family: Arial, sans-serif; }
-    h1, h2 { color: #2c3e50; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 1em; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background: #ecf0f1; }
+    /* Tipografía limpia */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f5f8fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #0072C6;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 1.8em;
+    }
+
+    .metrics {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .metrics table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .metrics thead {
+      background-color: #e6f2fb;
+    }
+
+    .metrics th {
+      padding: 12px;
+      text-align: left;
+      font-weight: 500;
+      border-bottom: 2px solid #d1e7f9;
+    }
+
+    .metrics tbody tr:nth-child(odd) {
+      background-color: #fafbfd;
+    }
+
+    .metrics td {
+      padding: 12px;
+      border-bottom: 1px solid #e1e8ed;
+    }
+
+    .metrics td span {
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      padding: 15px 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Informe Diario – <span th:text="${fecha}">2025-05-14</span></h1>
+  <header>
+    <h1>Informe General Diario</h1>
+    <p th:text="${fechaInforme}">15/05/2025</p>
+  </header>
 
-  <h2>Resumen General</h2>
-  <p>Pacientes únicos: <strong th:text="${totalPacientes}">0</strong></p>
-  <p>Reservas totales: <strong th:text="${totalReservas}">0</strong></p>
+  <div class="metrics">
+    <table>
+      <thead>
+        <tr>
+          <th>Información</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Altas</td>
+          <td><span th:text="${altas}"></span></td>
+        </tr>
+        <tr>
+          <td>Bajas</td>
+          <td><span th:text="${bajas}"></span></td>
+        </tr>
+        <tr>
+          <td>Ocupación media</td>
+          <td><span th:text="${ocupacionMed}"></span></td>
+        </tr>
+        <tr>
+          <td>Habitaciones libres</td>
+          <td><span th:text="${libres}"></span></td>
+        </tr>
+        <tr>
+          <td>Total Médicos</td>
+          <td><span th:text="${medicos}"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h2>Reservas por Médico</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Médico</th>
-        <th>Reservas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="m : ${reservasPorMedico}">
-        <td th:text="${m.nombreMedico}">Dr. Pérez</td>
-        <td th:text="${m.cantidad}">0</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Ocupación por Establecimiento</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Establecimiento</th>
-        <th>Capacidad</th>
-        <th>Ocupadas</th>
-        <th>Disponibles</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="e : ${ocupacion}">
-        <td th:text="${e.nombre}">Clínica A</td>
-        <td th:text="${e.capacidad}">0</td>
-        <td th:text="${e.ocupadas}">0</td>
-        <td th:text="${e.disponibles}">0</td>
-      </tr>
-    </tbody>
-  </table>
+  <footer>
+    &copy; <span th:text="${anio}">2025</span> Hospital General – Todos los derechos reservados
+  </footer>
 </body>
 </html>
-
