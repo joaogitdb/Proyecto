@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Usuarios</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nuevo usuario</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{u.usuario_id}}</td>
+        <td>{{u.username}}</td>
+        <td>{{u.rol}}</td>
+        <td>
+          <a [routerLink]="['/usuario/editar', u.usuario_id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(u.usuario_id)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

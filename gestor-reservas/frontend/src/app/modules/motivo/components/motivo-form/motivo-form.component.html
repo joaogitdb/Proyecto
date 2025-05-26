@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>{{ id ? 'Editar' : 'Nuevo' }} motivo</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Tipo</label>
+      <select class="form-select" formControlName="tipo">
+        <option value="ENTRADA">ENTRADA</option>
+        <option value="SALIDA">SALIDA</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <input class="form-control" formControlName="descripcion">
+    </div>
+    <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/motivo']">Cancelar</a>
+  </form>
+</div>

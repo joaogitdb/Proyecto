@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>{{ isEdit ? 'Editar' : 'Nueva' }} estadística</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Fecha</label>
+      <input type="date" class="form-control" formControlName="fecha" [readonly]="isEdit">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Altas</label>
+      <input type="number" class="form-control" formControlName="altas">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Bajas</label>
+      <input type="number" class="form-control" formControlName="bajas">
+    </div>
+    <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/estadisticas']">Cancelar</a>
+  </form>
+</div>

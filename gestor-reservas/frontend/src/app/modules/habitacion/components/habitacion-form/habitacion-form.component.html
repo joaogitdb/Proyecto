@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>{{ id ? 'Editar' : 'Nueva' }} habitación</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Establecimiento ID</label>
+      <input type="number" class="form-control" formControlName="establecimiento_id">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Bloque</label>
+      <input class="form-control" formControlName="bloque">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Piso</label>
+      <input class="form-control" formControlName="piso">
+    </div>
+    <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/habitacion']">Cancelar</a>
+  </form>
+</div>

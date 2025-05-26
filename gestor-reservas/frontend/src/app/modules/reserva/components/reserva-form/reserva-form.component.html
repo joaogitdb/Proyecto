@@ -1,0 +1,90 @@
+<div class="container">
+  <h2>{{ id ? 'Editar' : 'Nueva' }} reserva</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label>Paciente</label>
+      <select class="form-select" formControlName="paciente_id">
+        <option [ngValue]="null" disabled>-- selecciona paciente --</option>
+        <option *ngFor="let p of pacientes" [value]="p.paciente_id">
+          {{p.nombre}} {{p.apellidos}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Establecimiento</label>
+      <select class="form-select" formControlName="establecimiento_id">
+        <option [ngValue]="null" disabled>-- selecciona establecimiento --</option>
+        <option *ngFor="let e of establecimientos" [value]="e.establecimiento_id">
+          {{e.nombre}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Habitación</label>
+      <select class="form-select" formControlName="habitacion_id">
+        <option [ngValue]="null">-- (ninguna) --</option>
+        <option *ngFor="let h of habitaciones" [value]="h.habitacion_id">
+          Bloque {{h.bloque}} – Piso {{h.piso}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Médico</label>
+      <select class="form-select" formControlName="medico_id">
+        <option [ngValue]="null">-- (ninguno) --</option>
+        <option *ngFor="let m of medicos" [value]="m.medico_id">
+          Dr. {{m.nombre}} {{m.apellidos}}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Motivo Entrada</label>
+      <select class="form-select" formControlName="motivo_entrada_id">
+        <option [ngValue]="null" disabled>-- selecciona motivo --</option>
+        <ng-container *ngFor="let mo of motivos">
+          <option *ngIf="mo.tipo === 'ENTRADA'" [value]="mo.motivo_id">
+            {{ mo.descripcion }}
+          </option>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Motivo Salida</label>
+      <select class="form-select" formControlName="motivo_salida_id">
+        <option [ngValue]="null">-- (ninguno) --</option>
+        <ng-container *ngFor="let mo of motivos">
+          <option *ngIf="mo.tipo === 'SALIDA'" [value]="mo.motivo_id">
+            {{ mo.descripcion }}
+          </option>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Fecha Entrada</label>
+      <input type="datetime-local" class="form-control" formControlName="fecha_entrada">
+    </div>
+
+    <div class="mb-3">
+      <label>Fecha Salida</label>
+      <input type="datetime-local" class="form-control" formControlName="fecha_salida">
+    </div>
+
+    <div class="mb-3">
+      <label>Estado</label>
+      <select class="form-select" formControlName="estado">
+        <option value="ACTIVA">ACTIVA</option>
+        <option value="CANCELADA">CANCELADA</option>
+        <option value="COMPLETADA">COMPLETADA</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/reserva']">Cancelar</a>
+  </form>
+</div>

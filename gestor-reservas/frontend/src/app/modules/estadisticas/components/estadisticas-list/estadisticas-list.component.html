@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Estadísticas</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nueva estadística</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Altas</th>
+        <th>Bajas</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of stats">
+        <td>{{s.fecha}}</td>
+        <td>{{s.altas}}</td>
+        <td>{{s.bajas}}</td>
+        <td>
+          <a [routerLink]="['/estadisticas/editar', s.fecha]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(s.fecha)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

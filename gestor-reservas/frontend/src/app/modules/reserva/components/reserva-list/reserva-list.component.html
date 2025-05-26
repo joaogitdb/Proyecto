@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Reservas</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nueva reserva</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente ID</th>
+        <th>Estab. ID</th>
+        <th>Entrada</th>
+        <th>Salida</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of reservas">
+        <td>{{r.reserva_id}}</td>
+        <td>{{r.paciente_id}}</td>
+        <td>{{r.establecimiento_id}}</td>
+        <td>{{r.fecha_entrada}}</td>
+        <td>{{r.fecha_salida}}</td>
+        <td>{{r.estado}}</td>
+        <td>
+          <a [routerLink]="['/reserva/editar', r.reserva_id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(r.reserva_id)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

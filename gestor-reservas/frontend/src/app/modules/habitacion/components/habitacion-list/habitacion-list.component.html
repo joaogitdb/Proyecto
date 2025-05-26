@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Habitaciones</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nueva habitación</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Establecimiento ID</th>
+        <th>Bloque</th>
+        <th>Piso</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let h of habitaciones">
+        <td>{{h.habitacion_id}}</td>
+        <td>{{h.establecimiento_id}}</td>
+        <td>{{h.bloque}}</td>
+        <td>{{h.piso}}</td>
+        <td>
+          <a [routerLink]="['/habitacion/editar', h.habitacion_id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(h.habitacion_id)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

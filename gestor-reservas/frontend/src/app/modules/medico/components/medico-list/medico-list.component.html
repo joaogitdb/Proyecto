@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Médicos</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nuevo médico</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI</th>
+        <th>Especialidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of medicos">
+        <td>{{m.medico_id}}</td>
+        <td>{{m.nombre}}</td>
+        <td>{{m.apellidos}}</td>
+        <td>{{m.documento_identidad}}</td>
+        <td>{{m.especialidad}}</td>
+        <td>
+          <a [routerLink]="['/medico/editar', m.medico_id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(m.medico_id)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>{{ id ? 'Editar' : 'Nuevo' }} paciente</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" formControlName="nombre">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Apellidos</label>
+      <input class="form-control" formControlName="apellidos">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input type="date" class="form-control" formControlName="fecha_nacimiento">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Documento</label>
+      <input class="form-control" formControlName="documento_identidad">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Contacto</label>
+      <input class="form-control" formControlName="contacto">
+    </div>
+    <button class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/paciente']">Cancelar</a>
+  </form>
+</div>

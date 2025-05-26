@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Motivos</h2>
+  <a routerLink="./nuevo" class="btn btn-primary mb-2">Nuevo motivo</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of motivos">
+        <td>{{m.motivo_id}}</td>
+        <td>{{m.tipo}}</td>
+        <td>{{m.descripcion}}</td>
+        <td>
+          <a [routerLink]="['/motivo/editar', m.motivo_id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(m.motivo_id)" class="btn btn-sm btn-danger">🗑️</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
