@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EstadisticasService } from '../../services/estadisticas.service';
 import { ToastrService } from 'ngx-toastr';
+import { Estadistica } from '../../../../models/estadistica.model';
 
 @Component({
   selector: 'app-estadisticas-form',
@@ -34,11 +35,17 @@ export class EstadisticasFormComponent implements OnInit {
 
   save() {
     if (this.form.invalid) return;
-    const val = this.form.value;
-    const fn = this.isEdit
-      ? this.srv.update(val.fecha, val)
+
+    // ① casteamos el form.value a Estadistica
+    const val = this.form.value as Estadistica;
+    // ② desempaquetamos la fecha, y le decimos a TS que no es undefined
+    const fecha = val.fecha!;
+
+    const call$ = this.isEdit
+      ? this.srv.update(fecha, val)
       : this.srv.create(val);
-    fn.subscribe(
+
+    call$.subscribe(
       () => {
         this.toastr.success('Guardado');
         this.router.navigate(['/estadisticas']);

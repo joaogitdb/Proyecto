@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { ToastrService } from 'ngx-toastr';
+import { Usuario } from '../../../../models/usuario.model';
 
 @Component({
   selector: 'app-usuario-form',
@@ -33,9 +34,12 @@ export class UsuarioFormComponent implements OnInit {
 
   save() {
     if (this.form.invalid) return;
+
+    const payload = this.form.value as Usuario;
+
     const fn = this.id
-      ? this.srv.update(this.id, this.form.value)
-      : this.srv.create(this.form.value);
+      ? this.srv.update(this.id, payload)
+      : this.srv.create(payload);
     fn.subscribe(
       () => {
         this.toastr.success('Guardado');

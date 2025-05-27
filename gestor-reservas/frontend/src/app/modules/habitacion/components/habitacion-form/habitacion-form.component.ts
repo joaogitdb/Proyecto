@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HabitacionService } from '../../services/habitacion.service';
 import { ToastrService } from 'ngx-toastr';
+import { Habitacion } from '../../../../models/habitacion.model';
 
 @Component({
   selector: 'app-habitacion-form',
@@ -27,15 +28,19 @@ export class HabitacionFormComponent implements OnInit {
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id')!;
     if (this.id) {
-      this.srv.get(this.id).subscribe(h => this.form.patchValue(h));
+      this.srv.get(this.id).subscribe(h => this.form.patchValue(h as any));
     }
   }
 
   save() {
     if (this.form.invalid) return;
+
+    const payload = this.form.value as unknown as Habitacion;
+
+
     const fn = this.id
-      ? this.srv.update(this.id, this.form.value)
-      : this.srv.create(this.form.value);
+      ? this.srv.update(this.id, payload)
+      : this.srv.create(payload);
     fn.subscribe(
       () => {
         this.toastr.success('Guardado');

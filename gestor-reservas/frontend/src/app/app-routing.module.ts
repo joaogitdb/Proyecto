@@ -2,12 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-
-  {
-    path: 'reserva',
-    loadChildren: () =>
-      import('./modules/reserva/reserva.module').then(m => m.ReservaModule)
-  },
   { path: 'usuario',        loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: 'paciente',       loadChildren: () => import('./modules/paciente/paciente.module').then(m => m.PacienteModule) },
   { path: 'establecimiento',loadChildren: () => import('./modules/establecimiento/establecimiento.module').then(m => m.EstablecimientoModule) },

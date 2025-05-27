@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import { AppRoutingModule } from './app-routing.module'; // Asegúrate de que este módulo esté configurado correctamente
+import { AppRoutingModule } from './app-routing.module'; 
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,    // tu routing lazy-loaded
+    AppRoutingModule,    // routing lazy-loaded
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({ positionClass: 'toast-top-right' }),

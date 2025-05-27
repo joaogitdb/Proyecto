@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MotivoService } from '../../services/motivo.service';
 import { ToastrService } from 'ngx-toastr';
+import { Motivo } from '../../../../models/motivo.model';
 
 @Component({
   selector: 'app-motivo-form',
@@ -32,9 +33,13 @@ export class MotivoFormComponent implements OnInit {
 
   save() {
     if (this.form.invalid) return;
+
+    // Casteamos el form.value a un objeto con las propiedades esperadas
+    const payload = this.form.value as Motivo;
+
     const fn = this.id
-      ? this.srv.update(this.id, this.form.value)
-      : this.srv.create(this.form.value);
+      ? this.srv.update(this.id, payload)
+      : this.srv.create(payload);
     fn.subscribe(
       () => {
         this.toastr.success('Guardado');

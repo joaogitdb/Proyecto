@@ -1,0 +1,70 @@
+.container form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Campos que deben ocupar ambas columnas */
+.container form .mb-3:nth-of-type(1),
+.container form .mb-3:nth-of-type(2),
+.container form .mb-3:nth-of-type(7),
+.container form .mb-3:nth-of-type(8),
+.container form .mb-3:nth-of-type(9) {
+  grid-column: 1 / -1;
+}
+
+/* Etiquetas */
+.container form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+/* Selects e inputs */
+.container form .form-select,
+.container form .form-control {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.container form .form-select:focus,
+.container form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+/* Icono de calendario consistente */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(30%);
+}
+
+/* Botonera final ocupa ambas columnas */
+.container form button,
+.container form .btn-secondary {
+  grid-column: 1 / -1;
+  width: auto;
+}
+
+/* Alineación de botones */
+.container form button {
+  margin-right: 0.75rem;
+}
+
+/* Responsive: una columna en móvil */
+@media (max-width: 768px) {
+  .container form {
+    grid-template-columns: 1fr;
+  }
+  .container form button,
+  .container form .btn-secondary {
+    width: 100%;
+    margin: 0 0 0.75rem 0;
+  }
+}
