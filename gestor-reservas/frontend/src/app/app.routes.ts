@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+/*import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -12,7 +12,7 @@ export const routes: Routes = [
       import('./modules/usuario/usuario.module').then(m => m.UsuarioModule)
   },
   {
-    path: 'paciente',
+    path: 'pacientes',
     loadChildren: () =>
       import('./modules/paciente/paciente.module').then(m => m.PacienteModule)
   },
@@ -49,4 +49,4 @@ export const routes: Routes = [
   // redirección por defecto y wildcard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard' }
-];
+];*/

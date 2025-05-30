@@ -9,7 +9,8 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/establecimientos")
+@RequestMapping("/establecimientos")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EstablecimientoController {
 
     private final EstablecimientoRepository repository;

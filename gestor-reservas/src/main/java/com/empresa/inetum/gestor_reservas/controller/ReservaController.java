@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/reservas")
+@RequestMapping("/reservas")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReservaController {
 
     private final ReservaRepository repository;

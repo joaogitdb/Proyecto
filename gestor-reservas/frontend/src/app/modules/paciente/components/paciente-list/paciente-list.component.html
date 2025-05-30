@@ -4,15 +4,15 @@
   <a routerLink="./nuevo" class="btn btn-primary mb-2">Nuevo paciente</a>
   <table class="table table-striped">
     <thead>
-      <tr><th>Nombre</th><th>DNI</th><th>Acciones</th></tr>
+      <tr style="color:black"><th>Nombre</th><th>DNI</th><th>Acciones</th></tr>
     </thead>
     <tbody>
       <tr *ngFor="let p of pacientes">
-        <td>{{p.nombre}} {{p.apellidos}}</td>
-        <td>{{p.documento_identidad}}</td>
+        <td style="color:black">{{p.nombre}} {{p.apellidos}}</td>
+        <td style="color:black">{{p.documento_identidad}}</td>
         <td>
-          <a [routerLink]="['/paciente/editar', p.paciente_id]" class="btn btn-sm btn-warning">✏️</a>
-          <button (click)="delete(p.paciente_id)" class="btn btn-sm btn-danger">🗑️</button>
+          <a [routerLink]="['/paciente/editar', p.paciente_id]" class="btn btn-sm btn-warning"></a>
+          <button (click)="delete(p.paciente_id)" class="btn btn-sm btn-danger"></button>
         </td>
       </tr>
     </tbody>

@@ -10,7 +10,8 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pacientes")
+@RequestMapping("/pacientes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PacienteController {
 
     private final PacienteRepository repository;
@@ -21,6 +22,8 @@ public class PacienteController {
 
     @GetMapping
     public List<Paciente> getAll(@RequestParam(required = false) String nombre) {
+    	
+    	System.out.println("Nombre recibido: ");
         if (nombre != null) {
             return repository.findByNombreContainingIgnoreCase(nombre);
         }
