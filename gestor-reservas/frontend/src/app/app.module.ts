@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { PacienteListComponent } from './modules/paciente/components/paciente-list/paciente-list.component';
 import { ReactiveFormsModule } from '@angular/forms'; // Importar ReactiveFormsModule
 import { AppRoutingModule } from './app-routing.module';
+import { UsuarioListComponent } from './modules/usuario/components/usuario-list/usuario-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    UsuarioListComponent,
     PacienteListComponent         // el componente raíz
   ],
   imports: [

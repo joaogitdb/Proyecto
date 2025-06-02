@@ -28,6 +28,17 @@ export class PacienteListComponent implements OnInit {
     );
   }
 
+  edit(id?: number) {
+    if (!id) { return; }
+    this.srv.get(id).subscribe(
+      data => {
+        // Aquí podrías abrir un modal o redirigir a un formulario de edición
+        console.log('Editar paciente:', data);
+      },
+      () => this.toastr.error('Error al cargar paciente')
+    );
+  }
+
   delete(id?: number) {
     if (!id || !confirm('¿Eliminar paciente?')) { return; }
     this.srv.delete(id).subscribe(

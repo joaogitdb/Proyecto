@@ -1,0 +1,96 @@
+/* paciente-list.component.css */
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f5f7fa;
+  color: #2f3e46;
+  font-family: Arial, sans-serif;
+  padding: 16px;
+  border-radius: 6px;
+}
+
+/* Título */
+.container h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Utilidad de margen inferior */
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+/* Botones genéricos */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Botón primario */
+.btn-primary {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+/* Botones pequeños */
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Botón de advertencia/editar */
+.btn-warning {
+  background-color: #f39c12;
+  color: #ffffff;
+}
+
+/* Botón de peligro/eliminar */
+.btn-danger {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+/* Tablas */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Encabezado de tabla */
+.table thead tr {
+  background-color: #ecf0f1;
+}
+.table th {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Filas y celdas */
+.table td {
+  padding: 8px;
+}
+.table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Filas alternas */
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9fafb;
+}

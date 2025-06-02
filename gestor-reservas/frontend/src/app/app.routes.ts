@@ -1,4 +1,4 @@
-/*import { Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -49,4 +49,4 @@ export const routes: Routes = [
   // redirección por defecto y wildcard
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: 'dashboard' }
-];*/
+];

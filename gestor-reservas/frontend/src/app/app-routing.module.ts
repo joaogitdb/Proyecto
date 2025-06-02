@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PacienteFormComponent } from './modules/paciente/components/paciente-form/paciente-form.component';
-import { PacienteListComponent } from './modules/paciente/components/paciente-list/paciente-list.component';
 
 const routes: Routes = [
   { path: 'usuario',        loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule) },
   { path: 'paciente',       loadChildren: () => import('./modules/paciente/paciente.module').then(m => m.PacienteModule) },
-  { path: 'pacientes',   loadChildren: () => import('./modules/paciente/components/paciente-list/paciente-list.component').then(m => m.PacienteListComponent) },
-  { path: 'nuevo', component: PacienteFormComponent },
-  { path: 'editar/:id', component: PacienteFormComponent },
   { path: 'establecimiento',loadChildren: () => import('./modules/establecimiento/establecimiento.module').then(m => m.EstablecimientoModule) },
   { path: 'habitacion',     loadChildren: () => import('./modules/habitacion/habitacion.module').then(m => m.HabitacionModule) },
   { path: 'medico',         loadChildren: () => import('./modules/medico/medico.module').then(m => m.MedicoModule) },

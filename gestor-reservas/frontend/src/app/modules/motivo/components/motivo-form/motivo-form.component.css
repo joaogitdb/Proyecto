@@ -1,92 +1,81 @@
-.container form {
-  background-color: #fff;
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  max-width: 500px;
-  margin: 1rem auto;
+/* paciente-form.component.css */
+
+/* Contenedor principal */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f5f7fa;
+  color: #2f3e46;
+  font-family: Arial, sans-serif;
+  padding: 24px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Título del formulario */
+/* Título */
 .container h2 {
-  color: var(--primary-color);
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  border-bottom: 3px solid var(--secondary-color);
-  display: inline-block;
-  padding-bottom: 0.25rem;
+  margin-bottom: 24px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-/* Espaciado de campos */
+/* Utilidades de espaciado */
 .mb-3 {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+}
+.ms-2 {
+  margin-left: 8px;
 }
 
-/* Etiquetas */
+/* Etiquetas de formulario */
 .form-label {
   display: block;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: var(--text-color);
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2f3e46;
 }
 
-/* Select y input */
-.form-select,
+/* Campos de formulario */
 .form-control {
   width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 0.25rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.form-select:focus,
 .form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+  border-color: #3498db;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-/* Botonera */
+/* Botones genéricos */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Botón Guardar (éxito) */
 .btn-success {
-  background-color: var(--secondary-color);
-  border-color: var(--secondary-color);
-  color: #fff;
-  font-weight: 600;
+  background-color: #2ecc71;
+  color: #ffffff;
 }
 
-.btn-success:hover {
-  background-color: #218838;
-  border-color: #1e7e34;
-}
-
+/* Botón Cancelar (secundario) */
 .btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  color: #fff;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-
-/* Separación entre botones */
-.form .btn + .btn {
-  margin-left: 0.5rem;
-}
-
-/* Responsive móvil */
-@media (max-width: 576px) {
-  .container form {
-    padding: 1rem;
-  }
-  .form .btn {
-    width: 100%;
-    margin-bottom: 0.75rem;
-  }
-  .form .btn + .btn {
-    margin-left: 0;
-  }
+  background-color: #95a5a6;
+  color: #ffffff;
 }

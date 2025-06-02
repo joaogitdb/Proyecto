@@ -4,7 +4,7 @@ import { PacienteListComponent } from './components/paciente-list/paciente-list.
 import { PacienteFormComponent } from './components/paciente-form/paciente-form.component';
 
 const routes: Routes = [
-  { path: 'pacientes', component: PacienteListComponent },
+  { path: '', component: PacienteListComponent },
   { path: 'nuevo', component: PacienteFormComponent },
   { path: 'editar/:id', component: PacienteFormComponent }
 ];
