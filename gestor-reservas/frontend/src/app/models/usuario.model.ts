@@ -1,7 +1,7 @@
 export interface Usuario {
   id?: number;
   username: string;
-  password_hash: string;
+  passwordHash: string;
   rol: 'ADMIN' | 'OPERADOR' | 'LECTOR';
   fecha_creacion?: string;
   fecha_actualizacion?: string;

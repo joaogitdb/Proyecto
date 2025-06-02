@@ -12,7 +12,7 @@ import { Usuario } from '../../../../models/usuario.model';
 export class UsuarioFormComponent implements OnInit {
   form = this.fb.group({
     username: ['', Validators.required],
-    password_hash: ['', Validators.required],
+    passwordHash: ['', Validators.required],
     rol: ['LECTOR', Validators.required]
   });
   id?: number;
@@ -28,7 +28,11 @@ export class UsuarioFormComponent implements OnInit {
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id')!;
     if (this.id) {
-      this.srv.get(this.id).subscribe(u => this.form.patchValue(u));
+      this.srv.get(this.id).subscribe(u => this.form.patchValue({
+        username: u.username,
+        passwordHash: u.passwordHash,
+        rol: u.rol
+      }));
     }
   }
 
@@ -37,6 +41,7 @@ export class UsuarioFormComponent implements OnInit {
 
     const payload = this.form.value as Usuario;
 
+    
     const fn = this.id
       ? this.srv.update(this.id, payload)
       : this.srv.create(payload);

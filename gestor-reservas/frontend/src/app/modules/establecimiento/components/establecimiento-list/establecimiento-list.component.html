@@ -15,14 +15,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let e of items">
-        <td>{{e.establecimiento_id}}</td>
+        <td>{{e.id}}</td>
         <td>{{e.nombre}}</td>
         <td>{{e.direccion}}</td>
         <td>{{e.capacidad}}</td>
         <td>{{e.tipo}}</td>
         <td>
-          <a [routerLink]="['/establecimiento/editar', e.establecimiento_id]" class="btn btn-sm btn-warning">✏️</a>
-          <button (click)="delete(e.establecimiento_id)" class="btn btn-sm btn-danger">🗑️</button>
+          <a [routerLink]="['/establecimiento/editar', e.id]" class="btn btn-sm btn-warning">✏️</a>
+          <button (click)="delete(e.id)" class="btn btn-sm btn-danger">🗑️</button>
         </td>
       </tr>
     </tbody>

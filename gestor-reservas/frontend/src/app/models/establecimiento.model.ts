@@ -1,5 +1,5 @@
 export interface Establecimiento {
-  establecimiento_id?: number;
+ id?: number;
   nombre: string;
   direccion: string;
   capacidad: number;

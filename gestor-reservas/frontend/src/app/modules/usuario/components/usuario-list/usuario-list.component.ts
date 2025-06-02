@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../../models/usuario.model';
 import { UsuarioService } from '../../services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-usuario-list',
@@ -10,46 +11,29 @@ import { UsuarioService } from '../../services/usuario.service';
   styleUrls: ['./usuario-list.component.css']
 })
 export class UsuarioListComponent implements OnInit {
-  // 1) Array donde guardaremos los usuarios
-  usuarios: Usuario[] = [];
+  items: Usuario[] = [];
 
-  // 2) Banderas para controlar estado de carga y posibles errores
-  cargando = false;
-  errorMensaje = '';
+  constructor(
+    private srv: UsuarioService,
+    private toastr: ToastrService
+  ) { }
 
-  // 3) Inyectamos el servicio de usuarios
-  constructor(private usuarioService: UsuarioService) { }
-
-  // 4) Al iniciar el componente, traemos la lista desde el backend
-  ngOnInit(): void {
-    this.traerUsuarios();
+   ngOnInit(): void {
+    this.load();
   }
 
-  // 5) Método que llama al servicio y maneja la respuesta
-  traerUsuarios(): void {
-    this.cargando = true;
-    this.usuarioService.list().subscribe({
-      next: (data: Usuario[]) => {
-        this.usuarios = data;
-        this.cargando = false;
-      },
-      error: (err: any) => {
-        console.error('Error al traer usuarios:', err);
-        this.errorMensaje = 'No se pudieron cargar los usuarios.';
-        this.cargando = false;
-      }
-    });
+  load() {
+    this.srv.list().subscribe(
+      data => this.items = data,
+      ()   => this.toastr.error('Error al cargar usuarios')
+    );
   }
 
-  // (Opcional) Métodos para editar/borrar, según tu lógica
-  editarUsuario(u: Usuario) {
-    // Aquí podrías navegar a un formulario de edición,
-    // p.ej. this.router.navigate(['/usuarios/edit', u.usuario_id]);
-    console.log('Editar usuario', u);
-  }
-
-  eliminarUsuario(id: number) {
-    // Lógica para eliminar (llamar a usuarioService.delete(id).subscribe(...))
-    console.log('Eliminar usuario con id', id);
+  delete(id?: number) {
+    if (!id || !confirm('¿Eliminar usuario?')) return;
+    this.srv.delete(id).subscribe(
+      () => { this.toastr.success('Eliminado'); this.load(); },
+      () => this.toastr.error('Error al eliminar')
+    );
   }
 }

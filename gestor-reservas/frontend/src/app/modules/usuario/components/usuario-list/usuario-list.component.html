@@ -12,13 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of usuarios">
+      <tr *ngFor="let u of items"> 
         <td>{{u.id}}</td>
         <td>{{u.username}}</td>
         <td>{{u.rol}}</td>
         <td>
           <a [routerLink]="['/usuario/editar', u.id]" class="btn btn-sm btn-warning">✏️</a>
-          <button (click)="eliminarUsuario(u.id!)" class="btn btn-sm btn-danger">🗑️</button>
+          <button (click)="delete(u.id)" class="btn btn-sm btn-danger">🗑️</button>
         </td>
       </tr>
     </tbody>

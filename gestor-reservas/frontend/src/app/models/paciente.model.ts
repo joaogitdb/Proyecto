@@ -4,7 +4,7 @@ export interface Paciente {
   nombre: string;
   apellidos: string;
   fecha_nacimiento: string;  // ISO date
-  documento_identidad: string;
+  documentoIdentidad: string;
   contacto?: string;
   fecha_creacion?: string;
   fecha_actualizacion?: string;

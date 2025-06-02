@@ -16,7 +16,7 @@
       <label>Establecimiento</label>
       <select class="form-select" formControlName="establecimiento_id">
         <option [ngValue]="null" disabled>-- selecciona establecimiento --</option>
-        <option *ngFor="let e of establecimientos" [value]="e.establecimiento_id">
+        <option *ngFor="let e of establecimientos" [value]="e.id">
           {{e.nombre}}
         </option>
       </select>
